@@ -1,0 +1,194 @@
+/* =====================================================
+   FONT
+===================================================== */
+@font-face {
+  font-family: "Hitchcut";
+  src: url("/assets/fonts/Hitchcut.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =====================================================
+   BASE
+===================================================== */
+.about-container {
+  position: relative;
+  min-height: 100vh;
+  background-color: #f6f1df;
+  overflow: hidden;
+  border-top: 4px solid rgba(88, 3, 125, 0.9);
+  border-bottom: 4px solid rgba(88, 3, 125, 0.9);
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+.bg-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/assets/pattern.svg");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  opacity: 0.16;
+}
+
+/* =====================================================
+   TRIANGLES — LOCKED & STABLE
+===================================================== */
+.triangles {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.triangle {
+  position: absolute;
+  bottom: 0; /* 🔒 DO NOT CHANGE */
+  width: clamp(2400px, 170vw, 4400px);
+  transform-origin: bottom center;
+  will-change: transform;
+}
+
+/* LEFT */
+.left-triangle {
+  left: -36vw;
+  z-index: 3;
+}
+
+/* RIGHT */
+.right-triangle {
+  right: -36vw;
+  z-index: 2;
+}
+
+/* =====================================================
+   BROCHURE BUTTON
+===================================================== */
+.brochure-btn {
+  position: absolute;
+  top: 56px;
+  right: 56px;
+  z-index: 10;
+}
+
+.brochure-svg {
+  width: 220px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .brochure-btn {
+    display: none;
+  }
+}
+
+/* =====================================================
+   CONTENT (INITIALLY BEHIND LEFT TRIANGLE)
+===================================================== */
+.content-wrapper {
+  position: relative;
+  z-index: 2; /* BELOW left triangle */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 16vh;
+}
+
+.content-inner {
+  max-width: 860px;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-140px);
+  will-change: transform, opacity;
+}
+
+/* =====================================================
+   TEXT
+===================================================== */
+.main-title {
+  font-family: "Hitchcut";
+  font-size: clamp(64px, 9vw, 160px);
+  color: #8b0000;
+  line-height: 0.9;
+  margin-bottom: 28px;
+}
+
+.description {
+  font-family: "Hitchcut";
+  font-size: clamp(18px, 1.8vw, 32px);
+  line-height: 1.7;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.highlight {
+  color: #f97316;
+}
+
+/* =====================================================
+   ICON STRIP
+===================================================== */
+.icon-strip {
+  margin-top: 42px;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.icon-strip img {
+  height: 64px;
+}
+
+/* =====================================================
+   MOBILE — SAFE
+===================================================== */
+@media (max-width: 768px) {
+  .triangle {
+    bottom: -4vh;
+    width: clamp(1400px, 170vw, 2000px);
+  }
+
+  .left-triangle {
+    left: -120vw;
+  }
+
+  .right-triangle {
+    right: -120vw;
+  }
+  .about-container.is-active.left-triangle{
+    left: -42vw;
+  }
+
+  .about-container.is-active.right-triangle{
+    right: -42vw;
+  }
+
+  .content-wrapper {
+    padding-top: 12vh;
+  }
+
+  .main-title {
+    font-size: 56px;
+  }
+
+  .description {
+    font-size: 25px;
+  }
+
+  .icon-strip img {
+    height: 48px;
+  }
+}
+
+/* =====================================================
+   PERFORMANCE
+===================================================== */
+.triangle,
+.bg-pattern,
+.brochure-svg {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}

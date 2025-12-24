@@ -1,0 +1,14 @@
+/* App.css - Remove constraints for full-screen layout */
+#root {
+  /* Remove these lines that limit the width */
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+  
+  /* Keep these if needed */
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Keep or remove other styles as needed */
