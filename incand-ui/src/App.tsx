@@ -3,6 +3,7 @@
 // import './App.css';
 
 import AboutIncand from './components/AboutIncand';
+import AboutNits from './components/AboutNits';
 
 
 
@@ -12,6 +13,7 @@ function App() {
       
       
       <AboutIncand/>
+      <AboutNits/>
       
     </div>
   );
